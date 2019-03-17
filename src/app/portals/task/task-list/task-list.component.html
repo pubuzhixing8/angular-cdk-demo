@@ -1,0 +1,8 @@
+<div class="task-list-container">
+    <p class="">任务列表，单击查看详情</p>
+    <ul class="task-ul">
+      <li class="task-item" (click)="clickTaskItem(task)" [ngClass]="{'active': task === selectedTask}" *ngFor="let task of this.taskListService.tasks">
+        {{task.name}}
+      </li>
+    </ul>
+</div>

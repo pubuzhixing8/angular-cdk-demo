@@ -1,0 +1,23 @@
+<div class="task-detail">
+  <h3>{{task?.name}}</h3>
+  <p>
+    负责人：{{task?.assignee}}
+  </p>
+  <p>
+    参与人：
+    <ng-container *ngIf="task?.members">
+      <span *ngFor="let item of task.members;">
+        {{item}}，
+      </span>
+    </ng-container>
+
+  </p>
+  <p>
+    content：{{task?.content}}
+  </p>
+  <div class="task-model">
+    <p>新建任务</p>
+    <input type="text" #name value="" placeholder="任务名称">
+    <button (click)="submit(name.value)">提交</button>
+  </div>
+</div>

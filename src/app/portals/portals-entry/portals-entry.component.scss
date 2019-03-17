@@ -1,0 +1,26 @@
+.portals-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+    .portals-content {
+        display: flex;
+        justify-content: space-between;
+        .nav-div {
+            width: 290px;
+            .sub-operate {
+                margin-left: 8px;
+            }
+        }
+        .portals-outlet {
+            width: 500px;
+            height: 500px;
+            border: 2px dashed gray;
+            position: relative;
+        }
+    }
+    .defaut-content {
+        text-align: center;
+        color: grey;
+        transform: translateY(200px);
+    }
+}
