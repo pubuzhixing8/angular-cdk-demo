@@ -44,7 +44,7 @@ export class PortalsEntryComponent implements OnInit {
 
   ngOnInit() {
     this.taskListComponent.openTask = task => {
-      this.portalOpenTaskList(task);
+      this.portalCreatTaskModel(task);
     };
   }
 
@@ -76,7 +76,7 @@ export class PortalsEntryComponent implements OnInit {
     // 此处同样可以 通过ref.instance传递task参数
   }
 
-  portalOpenTaskList(task: TaskEntity) {
+  portalCreatTaskModel(task: TaskEntity) {
     this.virtualPotalOutlet.detach();
     const customerTokens = new WeakMap();
     customerTokens.set(TaskEntity, task);
