@@ -8,6 +8,7 @@
         <p>Angular 原生API动态加载组件</p>
         <div class="sub-operate">
           <button (click)="openTask()">打开任务详情</button>
+          <button class="ml-2" (click)="renderTemplate()">打开模板</button>
         </div>
       </section>
       <section>
@@ -20,6 +21,9 @@
         <p>配置injector 、ViewContainer</p>
         <section class="task-list">
           <app-task-list #taskListContainer></app-task-list>
+          <ng-template #customTemplate let-name="name">
+            <p>自定义模板，传入参数name：{{name}}</p>
+          </ng-template>
         </section>
       </section>
     </div>

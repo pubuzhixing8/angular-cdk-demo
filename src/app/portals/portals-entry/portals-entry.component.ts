@@ -4,7 +4,8 @@ import {
   ViewChild,
   ViewContainerRef,
   Injector,
-  ComponentFactoryResolver
+  ComponentFactoryResolver,
+  TemplateRef
 } from '@angular/core';
 import { DynamicComponentService } from '../service/dynamic-component.service';
 import { TaskDetailComponent } from '../task/task-detail/task-detail.component';
@@ -14,7 +15,6 @@ import {
   ComponentPortal,
   PortalInjector
 } from '@angular/cdk/portal';
-import { TaskListService } from '../service/task-list.service';
 import { TaskListComponent } from '../task/task-list/task-list.component';
 import { TaskModelComponent } from '../task/task-model/task-model.component';
 
@@ -36,11 +36,13 @@ export class PortalsEntryComponent implements OnInit {
   @ViewChild('taskListContainer', { read: TaskListComponent })
   taskListComponent: TaskListComponent;
 
+  @ViewChild('customTemplate')
+  customTemplate: TemplateRef<any>;
+
   constructor(
-    private dynamicComponentService: DynamicComponentService,
     private componentFactoryResolver: ComponentFactoryResolver,
     private injector: Injector
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.taskListComponent.openTask = task => {
@@ -56,15 +58,17 @@ export class PortalsEntryComponent implements OnInit {
     task.members = ['小建', 'tomi'];
     task.content =
       '最近阅读模态框ThyDialog实现，里面使用Portals动态创建组件，不是特别理解所以计划写一篇相关的学习文章。';
-    const ref = this.dynamicComponentService.renderComponent<
-      TaskDetailComponent
-    >(
-      TaskDetailComponent,
-      this.virtualContainer,
-      this.componentFactoryResolver,
-      this.injector
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(TaskDetailComponent);
+    const componentRef = this.virtualContainer.createComponent<TaskDetailComponent>(
+      componentFactory,
+      null,
+      this.virtualContainer.injector
     );
-    (ref.instance as TaskDetailComponent).task = task; // 传递参数
+    (componentRef.instance as TaskDetailComponent).task = task; // 传递参数
+  }
+
+  renderTemplate() {
+    this.virtualContainer.createEmbeddedView(this.customTemplate, { name: 'pubuzhixing' });
   }
 
   portalOpenTask() {
