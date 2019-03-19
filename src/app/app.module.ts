@@ -9,6 +9,7 @@ import { TaskDetailComponent } from './portals/task/task-detail/task-detail.comp
 import { TaskListComponent } from './portals/task/task-list/task-list.component';
 import { TaskListService } from './portals/service/task-list.service';
 import { TaskModelComponent } from './portals/task/task-model/task-model.component';
+import { DynamicComponentService } from './portals/service/dynamic-component.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TaskModelComponent } from './portals/task/task-model/task-model.compone
     PortalModule
   ],
   providers: [
+    DynamicComponentService
   ],
   bootstrap: [AppComponent]
 })

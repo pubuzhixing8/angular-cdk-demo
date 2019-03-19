@@ -1,5 +1,5 @@
-import { Injectable, ViewContainerRef, Injector, ComponentRef } from '@angular/core';
-import { ComponentFactoryResolver } from '@angular/core/src/render3';
+import { Injectable, ViewContainerRef, Injector, ComponentRef, NgZone, ComponentFactoryResolver } from '@angular/core';
+// import { ComponentFactoryResolver } from '@angular/core/src/render3';
 
 export interface ComponentType<T> {
     new(...args: any[]): T;
@@ -10,8 +10,13 @@ export interface ComponentType<T> {
 })
 export class DynamicComponentService {
 
-    constructor() {
-
+    constructor(
+        private componentFactoryResolver: ComponentFactoryResolver,
+        private injector: Injector,
+        private ngZone: NgZone) {
+            console.log(this.injector);
+            console.log(this.ngZone);
+            console.log(componentFactoryResolver);
     }
     renderComponent<T>(
         component: ComponentType<T>,

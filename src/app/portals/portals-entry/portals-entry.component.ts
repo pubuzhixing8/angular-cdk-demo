@@ -41,7 +41,8 @@ export class PortalsEntryComponent implements OnInit {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    private injector: Injector
+    private injector: Injector,
+    service: DynamicComponentService
   ) { }
 
   ngOnInit() {
