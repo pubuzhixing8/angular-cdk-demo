@@ -10,6 +10,9 @@ import { TaskListComponent } from './portals/task/task-list/task-list.component'
 import { TaskListService } from './portals/service/task-list.service';
 import { TaskModelComponent } from './portals/task/task-model/task-model.component';
 import { DynamicComponentService } from './portals/service/dynamic-component.service';
+import { OnpushComponent } from './onpush/onpush.component';
+import { OverlayComponent } from './overlay/overlay.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { DynamicComponentService } from './portals/service/dynamic-component.ser
     PortalsEntryComponent,
     TaskDetailComponent,
     TaskListComponent,
-    TaskModelComponent
+    TaskModelComponent,
+    OnpushComponent,
+    OverlayComponent
   ],
   entryComponents: [
     TaskDetailComponent,
@@ -26,7 +31,8 @@ import { DynamicComponentService } from './portals/service/dynamic-component.ser
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PortalModule
+    PortalModule,
+    OverlayModule
   ],
   providers: [
     DynamicComponentService
